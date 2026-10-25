@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Apuração do segundo turno de 2026, com as urnas do Brasil e de fora do país.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Apuração">
+  <title>Apuração 2026 · urnas no exterior</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="nav-row">
+          <div>
+            <p class="nav-titulo">Apuração</p>
+            <p class="nav-sub" id="relogio">2º turno · Brasília</p>
+          </div>
+          <button type="button" id="atualizar" class="icone" aria-label="Atualizar os números">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12a7.5 7.5 0 1 1-2.1-5.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19.6 4.8v4.2h-4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="segmented" id="abas" role="tablist" aria-label="Recortes" data-index="0">
+          <span class="segmented-thumb" aria-hidden="true"></span>
+          <button type="button" role="tab" id="aba-exterior" data-aba="exterior" aria-selected="true" aria-controls="painel-exterior">Exterior</button>
+          <button type="button" role="tab" id="aba-brasil" data-aba="brasil" aria-selected="false" aria-controls="painel-brasil" tabindex="-1">Brasil</button>
+          <button type="button" role="tab" id="aba-estados" data-aba="estados" aria-selected="false" aria-controls="painel-estados" tabindex="-1">Estados</button>
+        </div>
+      </div>
+    </header>
+
+    <p id="aviso" class="aviso" role="status" hidden></p>
+
+    <main>
+      <section id="painel-exterior" role="tabpanel" aria-labelledby="aba-exterior">
+        <div class="miolo">
+          <div class="coluna-resumo" id="exterior-resumo" aria-busy="true">
+            <div class="cartao esqueleto" aria-hidden="true"><span></span><span class="curto"></span><span></span></div>
+          </div>
+          <div class="coluna-lista">
+            <div class="filtros">
+              <label class="busca">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16.5 20 20.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <span class="sr">Buscar posto ou país</span>
+                <input id="busca" type="search" placeholder="Buscar posto ou país" autocomplete="off" spellcheck="false" enterkeyhint="search">
+              </label>
+              <div class="chips" id="regioes" role="group" aria-label="Região"></div>
+              <div class="lista-topo">
+                <p id="contagem-lista">Postos</p>
+                <label class="ordem">
+                  <span class="sr">Ordenar</span>
+                  <select id="ordem">
+                    <option value="aptos">Maiores colégios</option>
+                    <option value="apurado">Mais adiantados</option>
+                    <option value="nome">Nome</option>
+                    <option value="votos">Mais votos</option>
+                  </select>
+                </label>
+              </div>
+              <label class="interruptor">
+                <span>Só quem já enviou urna</span>
+                <input id="so-urna" type="checkbox">
+              </label>
+            </div>
+            <div class="grupo" id="lista-postos"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="painel-brasil" role="tabpanel" aria-labelledby="aba-brasil" hidden>
+        <div class="coluna" id="brasil-resumo"></div>
+      </section>
+
+      <section id="painel-estados" role="tabpanel" aria-labelledby="aba-estados" hidden>
+        <div class="coluna" id="lista-estados"></div>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <p>Números oficiais do <a href="https://resultados.tse.jus.br/oficial/app/index.html">Tribunal Superior Eleitoral</a>. Sem projeção.</p>
+    </footer>
+  </div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

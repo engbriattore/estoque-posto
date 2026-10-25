@@ -1,0 +1,13 @@
+{
+  "name": "apuracao-exterior",
+  "private": true,
+  "type": "module",
+  "description": "Apuração do 2º turno de 2026, com as urnas do Brasil e do exterior.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
